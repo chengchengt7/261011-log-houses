@@ -1,8 +1,9 @@
+import type { Film } from "@/types/film";
 import FilmCard from "@/components/FilmCard/FilmCard";
 import "./FilmGrid.css";
 
 type FilmGridProps = {
-  films: { id: string; title: string }[];
+  films: Film[];
 };
 
 export default function FilmGrid({ films }: FilmGridProps) {
@@ -10,7 +11,7 @@ export default function FilmGrid({ films }: FilmGridProps) {
     <ul className="film-grid">
       {films.map((film) => (
         <li key={film.id}>
-          <FilmCard title={film.title} />
+          <FilmCard film={film} />
         </li>
       ))}
     </ul>

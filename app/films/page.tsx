@@ -1,17 +1,20 @@
 import FilmGrid from "@/components/FilmGrid/FilmGrid";
-import { FILM_IDS } from "@/constants/api";
+import { getFilms } from "@/lib/films";
 
-export default function FilmsPage() {
-  const films = FILM_IDS.map((id, index) => ({
-    id,
-    title: `Film ${index + 1}`,
-  }));
+export default async function FilmsPage() {
+  const films = await getFilms().catch(() => null);
 
   return (
     <section>
       <h1>The film collection</h1>
-      <p>15 selected films about log houses. Film details are coming next.</p>
-      <FilmGrid films={films} />
+      <p>Explore our curated collection of 15 films about log houses.</p>
+      {films === null ? (
+        <p role="alert">Unable to load films. Please try again later.</p>
+      ) : films.length === 0 ? (
+        <p>No films are available right now.</p>
+      ) : (
+        <FilmGrid films={films} />
+      )}
     </section>
   );
 }

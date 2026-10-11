@@ -1,13 +1,57 @@
 .film-card {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   padding: 1rem;
   background-color: var(--color-panel);
   border: 1px solid var(--color-line);
   border-radius: 0.5rem;
+}
 
-  p {
-  margin-top: 0.75rem;
+.film-card-image {
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.25rem;
+}
+
+.film-card-image img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.film-card-duration {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.2rem;
+  background-color: var(--color-bg);
+  color: var(--color-cream);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.film-card-meta {
+  margin-block: 0.75rem 0.5rem;
   color: var(--color-muted);
-}
+  font-size: 0.875rem;
 }
 
+.film-card h2 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+
+.film-card-tag {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--color-line);
+  border-radius: 1rem;
+  color: var(--color-green);
+  font-size: 0.75rem;
+}
