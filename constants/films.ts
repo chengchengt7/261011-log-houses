@@ -1,0 +1,17 @@
+export const CURATED_FILMS = [
+  { id: "U9o9ChsT460", country: "Norway", theme: "The craft" },
+  { id: "rTICE0-Ygsc", country: "Finland", theme: "The craft" },
+  { id: "cIE-mP30XDE", country: "Finland", theme: "The craft" },
+  { id: "Qz4z_UWzA20", country: "Russia", theme: "The craft" },
+  { id: "FtiaSn5iCg8", country: "Sweden", theme: "The craft" },
+  { id: "iYJKd0rkKss", country: "United States", theme: "Life inside" },
+  { id: "oiX8JzYn2e4", country: "China", theme: "Life inside" },
+  { id: "HNTfLGt59qo", country: "Finland", theme: "The craft" },
+  { id: "RgtPHMhMmbY", country: "Finland", theme: "The craft" },
+  { id: "gYaphXiYvvM", country: "Finland", theme: "The craft" },
+  { id: "CReYOhDSEgQ", country: "Finland", theme: "The craft" },
+  { id: "d4746vgMS-w", country: "Norway", theme: "The craft" },
+  { id: "kV7_ZjNP_FM", country: "Canada", theme: "The craft" },
+  { id: "UlVENzhq_Xw", country: "United States", theme: "The craft" },
+  { id: "HwPoLOZkFyE", country: "Canada", theme: "Life inside" },
+] as const;
