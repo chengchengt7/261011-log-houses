@@ -1,0 +1,13 @@
+.film-card {
+  height: 100%;
+  padding: 1rem;
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-line);
+  border-radius: 0.5rem;
+
+  p {
+  margin-top: 0.75rem;
+  color: var(--color-muted);
+}
+}
+
