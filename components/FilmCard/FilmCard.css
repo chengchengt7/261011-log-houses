@@ -55,3 +55,18 @@
   color: var(--color-green);
   font-size: 0.75rem;
 }
+
+.film-card-link {
+  display: block;
+  height: 100%;
+  border-radius: 0.5rem;
+}
+
+.film-card-link:hover .film-card {
+  border-color: var(--color-gold);
+}
+
+.film-card-link:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 4px;
+}

@@ -1,48 +1,14 @@
 import "server-only";
 import { formatDuration } from "@/lib/formatDuration";
 import { CURATED_FILMS } from "@/constants/films";
-import type { Film } from "@/types/film";
+import type { FilmCardData, FilmDetails } from "@/types/film";
 import { FILM_API_ENDPOINT } from "@/constants/api";
 
-type YouTubeVideo = {
-  id: string;
-  contentDetails: { duration: string };
-  snippet: {
-    title: string;
-    publishedAt: string;
-    description: string;
-    thumbnails: {
-      default: { url: string };
-      medium?: { url: string };
-    };
-  };
-};
-
-export async function getFilms(): Promise<Film[]> {
-  const key = process.env.YOUTUBE_API_KEY;
-
-  if (!key) {
-    throw new Error("YOUTUBE_API_KEY is missing from .env.local.");
-  }
-
-  const params = new URLSearchParams({
-    part: "snippet,contentDetails",
-    id: CURATED_FILMS.map((film) => film.id).join(","),
-    key,
-  });
-
-  const response = await fetch(`${FILM_API_ENDPOINT}?${params}`, {
-    next: { revalidate: 3600 },
-  });
-
-  if (!response.ok) {
-    throw new Error("Unable to fetch films from YouTube.");
-  }
-
-  const data: { items: YouTubeVideo[] } = await response.json();
+export async function getFilms(): Promise<FilmCardData[]> {
+  const videos = await getFilm(CURATED_FILMS.map((film) => film.id));
 
   return CURATED_FILMS.flatMap((film) => {
-    const video = data.items.find((item) => item.id === film.id);
+    const video = videos.find((item) => item.id === film.id);
 
     if (!video) return [];
 
@@ -59,4 +25,33 @@ export async function getFilms(): Promise<Film[]> {
         video.snippet.thumbnails.default.url,
     }];
   });
+}
+
+export async function getFilm(ids: string[]): Promise<FilmDetails[]> {
+  if (ids.length === 0) {
+    return [];
+  }
+
+  const key = process.env.YOUTUBE_API_KEY;
+
+  if (!key) {
+    throw new Error("YOUTUBE_API_KEY is missing from .env.local.");
+  }
+
+  const params = new URLSearchParams({
+    part: "snippet,contentDetails,statistics,status",
+    id: ids.join(","),
+    key,
+  });
+
+  const response = await fetch(`${FILM_API_ENDPOINT}?${params}`, {
+    next: { revalidate: 3600 },
+  });
+
+  if (!response.ok) {
+    throw new Error("Unable to fetch films from YouTube.");
+  }
+
+  const data: { items: FilmDetails[] } = await response.json();
+  return data.items;
 }

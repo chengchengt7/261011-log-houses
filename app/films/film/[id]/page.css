@@ -1,0 +1,77 @@
+.film-detail {
+  display: grid;
+  gap: 1.5rem;
+  padding-block: 2rem 4rem;
+  min-width: 0;
+}
+
+.film-detail h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.film-detail a {
+  color: var(--color-gold);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.film-detail a:focus-visible,
+.film-detail button:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 4px;
+}
+
+.film-detail-player {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 200px;
+  border: 0;
+  border-radius: 0.5rem;
+  background: var(--color-panel);
+}
+
+.film-detail-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: 1.5rem;
+  padding-block: 1.5rem;
+  border-block: 1px solid var(--color-line);
+}
+
+.film-detail-facts dt {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  margin-bottom: 0.4rem;
+}
+
+.film-detail-description {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin-top: 1rem;
+  color: var(--color-muted);
+}
+
+.film-detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.film-detail-tags li {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--color-line);
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+
+.film-detail button {
+  justify-self: start;
+  padding: 0.75rem 1rem;
+  background: var(--color-cream);
+  color: var(--color-bg);
+  border-radius: 0.25rem;
+  cursor: pointer;
+}

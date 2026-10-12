@@ -1,9 +1,9 @@
-import type { Film } from "@/types/film";
+import type { FilmCardData } from "@/types/film";
 import FilmCard from "@/components/FilmCard/FilmCard";
 import "./FilmGrid.css";
 
 type FilmGridProps = {
-  films: Film[];
+  films: FilmCardData[];
 };
 
 export default function FilmGrid({ films }: FilmGridProps) {
