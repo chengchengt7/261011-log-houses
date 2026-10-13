@@ -1,0 +1,45 @@
+.film-collection {
+  display: grid;
+  gap: 1.25rem;
+  margin-block: 2rem;
+  min-width: 0;
+}
+
+.film-collection-results {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.film-collection-results p {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+.film-collection-results button {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--color-line);
+  border-radius: 0.25rem;
+  background: var(--color-panel);
+  color: var(--color-gold);
+  cursor: pointer;
+}
+
+.film-collection-results button:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+.film-collection .film-grid {
+  margin-block: 0;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+}
+
+.film-collection-empty {
+  padding: 2rem 1rem;
+  border: 1px dashed var(--color-line);
+  color: var(--color-muted);
+  text-align: center;
+}

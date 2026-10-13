@@ -9,7 +9,6 @@ export default function Header() {
       <nav>
         <Link href="/films">Films</Link>
         <Link href="/about">About</Link>
-        <Link href="/watchlist">Watchlist</Link>
       </nav>
     </header>
   );

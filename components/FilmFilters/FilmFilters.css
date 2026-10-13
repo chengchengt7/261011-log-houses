@@ -1,0 +1,111 @@
+.film-filters {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.film-filter-countries {
+  min-width: 0;
+  border: 0;
+}
+
+.film-filter-countries legend {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+.film-filter-countries > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.film-filter-countries button {
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--color-line);
+  border-radius: 0.25rem;
+  background: var(--color-panel);
+  color: var(--color-cream);
+  cursor: pointer;
+}
+
+.film-filter-countries button[aria-pressed="true"] {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+.film-filter-selects {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.film-filter-dropdown {
+  position: relative;
+  min-width: 0;
+}
+
+.film-filter-dropdown[open] {
+  z-index: 2;
+}
+
+.film-filter-dropdown summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--color-line);
+  border-radius: 0.25rem;
+  background: var(--color-panel);
+  color: var(--color-cream);
+  list-style: none;
+  cursor: pointer;
+}
+
+.film-filter-options {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  left: 0;
+  right: 0;
+  padding: 0.3rem;
+  border: 1px solid var(--color-line);
+  border-radius: 0.25rem;
+  background: var(--color-panel);
+  color: var(--color-cream);
+  box-shadow: 0 0.5rem 1.5rem #0004;
+}
+
+.film-filter-options button {
+  display: block;
+  width: 100%;
+  padding: 0.65rem;
+  border-radius: 0.2rem;
+  text-align: left;
+  background: var(--color-panel);
+  color: var(--color-cream);
+  cursor: pointer;
+}
+
+.film-filter-options button:hover,
+.film-filter-options button[aria-pressed="true"] {
+  background: var(--color-bg);
+}
+
+.film-filters button:focus-visible,
+.film-filter-dropdown summary:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+
+
+.film-filter-dropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+.film-filter-arrow {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}

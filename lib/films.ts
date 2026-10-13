@@ -1,5 +1,5 @@
 import "server-only";
-import { formatDuration } from "@/lib/formatDuration";
+import { formatDuration, getDurationSeconds } from "@/lib/formatDuration";
 import { CURATED_FILMS } from "@/constants/films";
 import type { FilmCardData, FilmDetails } from "@/types/film";
 import { FILM_API_ENDPOINT } from "@/constants/api";
@@ -18,6 +18,7 @@ export async function getFilms(): Promise<FilmCardData[]> {
       theme: film.theme,
       year: video.snippet.publishedAt.slice(0, 4),
       duration: formatDuration(video.contentDetails.duration),
+      durationSeconds: getDurationSeconds(video.contentDetails.duration),
       title: video.snippet.title,
       description: video.snippet.description,
       thumbnail:

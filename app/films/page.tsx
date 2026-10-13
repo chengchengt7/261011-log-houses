@@ -1,4 +1,4 @@
-import FilmGrid from "@/components/FilmGrid/FilmGrid";
+import FilmCollection from "@/components/FilmCollection/FilmCollection";
 import { getFilms } from "@/lib/films";
 
 export default async function FilmsPage() {
@@ -13,7 +13,7 @@ export default async function FilmsPage() {
       ) : films.length === 0 ? (
         <p>No films are available right now.</p>
       ) : (
-        <FilmGrid films={films} />
+        <FilmCollection films={films} />
       )}
     </section>
   );

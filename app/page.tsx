@@ -1,4 +1,4 @@
-import FilmGrid from "@/components/FilmGrid/FilmGrid";
+import FilmCollection from "@/components/FilmCollection/FilmCollection";
 import Hero from "@/components/Hero/Hero";
 import { getFilms } from "@/lib/films";
 
@@ -13,8 +13,9 @@ export default async function Home() {
       ) : films.length === 0 ? (
         <p>No films are available right now.</p>
       ) : (
-        <FilmGrid films={films} />
+        <FilmCollection films={films} />
       )}
+      
     </>
   );
 }

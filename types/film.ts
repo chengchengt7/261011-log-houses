@@ -4,6 +4,7 @@ export type FilmCardData = {
   description: string;
   thumbnail: string;
   duration: string;
+  durationSeconds: number;
   country: string;
   theme: "The craft" | "Life inside";
   year: string;
@@ -26,4 +27,11 @@ export type FilmDetails = {
   contentDetails: { duration: string };
   statistics?: { viewCount?: string };
   status: { embeddable: boolean };
+};
+
+export type FilmFilterValues = {
+  query: string;
+  country: string;
+  duration: string;
+  theme: string;
 };
