@@ -7,13 +7,15 @@ export default async function Home() {
 
   return (
     <>
-      <Hero />
+      <Hero films={films ?? []} />
       {films === null ? (
         <p role="alert">Unable to load films. Please try again later.</p>
       ) : films.length === 0 ? (
         <p>No films are available right now.</p>
       ) : (
-        <FilmCollection films={films} />
+        <section id="collection" aria-label="Film collection">
+          <FilmCollection films={films} />
+        </section>
       )}
       
     </>

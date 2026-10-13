@@ -21,7 +21,8 @@ export type FilmDetails = {
     tags?: string[];
     thumbnails: {
       default: { url: string };
-      medium?: { url: string };
+      high?: { url: string };
+      maxres?: { url: string };
     };
   };
   contentDetails: { duration: string };
