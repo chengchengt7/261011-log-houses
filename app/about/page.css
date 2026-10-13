@@ -1,0 +1,39 @@
+.about-page {
+  max-width: 48rem;
+  margin-inline: auto;
+  padding-block: 3rem 4rem;
+  display: grid;
+  gap: 2.5rem;
+
+  & > * + * {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-line);
+  }
+}
+
+.about-page header,
+.about-page section {
+  display: grid;
+  gap: 1rem;
+}
+
+.about-page h2 {
+  font-family: "DM Serif Display", serif;
+  font-weight: 400;
+}
+
+.about-page p {
+  color: var(--color-muted);
+}
+
+.about-page a {
+  justify-self: start;
+  color: var(--color-gold);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.about-page a:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 4px;
+}
