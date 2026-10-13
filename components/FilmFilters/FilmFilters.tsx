@@ -2,16 +2,19 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import BookmarkIcon from "@/components/BookmarkIcon/BookmarkIcon";
 import type { FilmFilterValues } from "@/types/film";
 import "./FilmFilters.css";
 
 type FilmFiltersProps = {
   countries: string[];
+  watchlistOnly: boolean;
+  onWatchlistChange: () => void;
   filters: FilmFilterValues;
   onChange: (name: keyof FilmFilterValues, value: string) => void;
 };
 
-export default function FilmFilters({ countries, filters, onChange }: FilmFiltersProps) {
+export default function FilmFilters({ countries, filters, onChange, watchlistOnly, onWatchlistChange }: FilmFiltersProps) {
   return (
     <div className="film-filters">
       <fieldset className="film-filter-countries" aria-label="Country">
@@ -49,6 +52,15 @@ export default function FilmFilters({ countries, filters, onChange }: FilmFilter
             { value: "Life inside", label: "Life inside" },
           ]}
         />
+        <button
+          type="button"
+          className="film-filter-watchlist"
+          aria-pressed={watchlistOnly}
+          onClick={onWatchlistChange}
+        >
+          <BookmarkIcon filled={watchlistOnly} size={18} />
+          Watchlist
+        </button>
       </div>
     </div>
   );
@@ -101,7 +113,7 @@ function FilterDropdown({ label, value, options, onChange }: FilterDropdownProps
     >
       <summary aria-label={`${label}: ${selected?.label ?? ""}`}>
         {selected?.label}
-        <Image src="/arrow-down.png" alt="" width={16} height={16} className="film-filter-arrow" />
+        <Image src="/arrow-down.svg" alt="" width={16} height={16} className="film-filter-arrow" />
       </summary>
       <div className="film-filter-options" role="group" aria-label={`${label} options`}>
         {options.map((option) => (

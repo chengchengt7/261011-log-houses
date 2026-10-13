@@ -1,5 +1,5 @@
 import "server-only";
-import { formatDuration, getDurationSeconds } from "@/lib/formatDuration";
+import { formatDuration, getDurationSeconds } from "@/utils/formatDuration";
 import { CURATED_FILMS } from "@/constants/films";
 import type { FilmCardData, FilmDetails } from "@/types/film";
 import { FILM_API_ENDPOINT } from "@/constants/api";

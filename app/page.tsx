@@ -1,6 +1,6 @@
 import FilmCollection from "@/components/FilmCollection/FilmCollection";
 import Hero from "@/components/Hero/Hero";
-import { getFilms } from "@/lib/films";
+import { getFilms } from "@/utils/filmsApi";
 
 export default async function Home() {
   const films = await getFilms().catch(() => null);

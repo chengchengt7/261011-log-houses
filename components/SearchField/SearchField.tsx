@@ -10,7 +10,7 @@ export default function SearchField({ value, onChange }: SearchFieldProps) {
   return (
     <label className="search-field">
       <Image
-        src="/search-icon.png"
+        src="/search.svg"
         alt=""
         width={18}
         height={18}

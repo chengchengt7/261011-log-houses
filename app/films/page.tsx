@@ -1,5 +1,5 @@
 import FilmCollection from "@/components/FilmCollection/FilmCollection";
-import { getFilms } from "@/lib/films";
+import { getFilms } from "@/utils/filmsApi";
 
 export default async function FilmsPage() {
   const films = await getFilms().catch(() => null);

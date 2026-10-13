@@ -70,3 +70,38 @@
   outline: 2px solid var(--color-gold);
   outline-offset: 4px;
 }
+
+.film-card-container {
+  position: relative;
+  height: 100%;
+}
+
+.bookmark {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--color-line);
+  border-radius: 100vh;
+  background: color-mix(in srgb, var(--color-bg) 80%, transparent);
+  color: var(--color-cream);
+  cursor: pointer;
+}
+
+.bookmark[aria-pressed="true"] {
+  color: var(--color-gold);
+}
+
+.bookmark:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+.bookmark-icon {
+  width: 1.5rem;
+  height: auto;
+}
+

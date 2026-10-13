@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getFilm } from "@/lib/films";
-import { formatDuration } from "@/lib/formatDuration";
+import { getFilm } from "@/utils/filmsApi";
+import { formatDuration } from "@/utils/formatDuration";
 import "./page.css";
 
 export default async function FilmPage({
