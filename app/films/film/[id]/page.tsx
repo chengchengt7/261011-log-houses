@@ -26,7 +26,7 @@ export default async function FilmPage({
       {film.status.embeddable ? (
         <iframe
           className="film-detail-player"
-          src={`https://www.youtube-nocookie.com/embed/${film.id}`}
+          src={`https://www.youtube.com/embed/${film.id}`}
           title={`Watch ${film.snippet.title}`}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"

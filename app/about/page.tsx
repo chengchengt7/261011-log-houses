@@ -1,14 +1,16 @@
+import { CURATED_FILMS } from "@/constants/films";
 import Link from "next/link";
 import "./page.css";
 
 export default function AboutPage() {
+  const countryCount = new Set(CURATED_FILMS.map((film) => film.country)).size;
   return (
     <article className="about-page">
       <section>
         <h2>About the collection</h2>
         <p>
-          Log Houses Across the World brings together 15 selected films from
-          seven countries. Explore how people build with logs, pass on
+          Log Houses Across the World brings together {CURATED_FILMS.length} selected films from
+          {" "}{countryCount} countries. Explore how people build with logs, pass on
           traditional skills, and make a home close to nature.
         </p>
       </section>

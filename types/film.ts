@@ -14,6 +14,7 @@ export type FilmDetails = {
   id: string;
   snippet: {
     title: string;
+    localized?: { title: string };
     description: string;
     publishedAt: string;
     channelId: string;

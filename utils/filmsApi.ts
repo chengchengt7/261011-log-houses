@@ -42,6 +42,7 @@ export async function getFilm(ids: string[]): Promise<FilmDetails[]> {
 
   const params = new URLSearchParams({
     part: "snippet,contentDetails,statistics,status",
+    hl: "en",
     id: ids.join(","),
     key,
   });
@@ -55,5 +56,11 @@ export async function getFilm(ids: string[]): Promise<FilmDetails[]> {
   }
 
   const data: { items: FilmDetails[] } = await response.json();
-  return data.items;
+  return data.items.map((video) => ({
+    ...video,
+    snippet: {
+      ...video.snippet,
+      title: video.snippet.localized?.title ?? video.snippet.title,
+    },
+  }));
 }

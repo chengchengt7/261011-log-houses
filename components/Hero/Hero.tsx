@@ -19,7 +19,7 @@ export default function Hero({ films }: HeroProps) {
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const timer = setInterval(() => {
       if (!motion.matches) setActive((current) => (current + 1) % films.length);
-    }, 6000);
+    }, 4000);
 
     return () => clearInterval(timer);
   }, [paused, films.length]);
