@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getFilm } from "@/utils/filmsApi";
+import { getYouTubeVideos } from "@/utils/filmsApi";
 import { formatDuration } from "@/utils/formatDuration";
 import "./page.css";
 
@@ -10,7 +10,7 @@ export default async function FilmPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const [film] = await getFilm([id]);
+  const [film] = await getYouTubeVideos([id]);
   if (!film) notFound();
 
   return (

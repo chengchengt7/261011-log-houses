@@ -1,3 +1,5 @@
+export const FILMS_PER_PAGE = 12 as const;
+
 export const CURATED_FILMS = [
   { id: "U9o9ChsT460", country: "Norway", theme: "The craft" },
   { id: "rTICE0-Ygsc", country: "Finland", theme: "The craft" },

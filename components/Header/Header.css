@@ -13,4 +13,8 @@ header {
     padding: 1.5rem;
     font-weight: 500;
   }
+
+  @media (max-width: 70rem) {
+    padding-inline: 0;
+  }
 }

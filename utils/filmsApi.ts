@@ -5,7 +5,7 @@ import type { FilmCardData, FilmDetails } from "@/types/film";
 import { FILM_API_ENDPOINT } from "@/constants/api";
 
 export async function getFilms(): Promise<FilmCardData[]> {
-  const videos = await getFilm(CURATED_FILMS.map((film) => film.id));
+  const videos = await getYouTubeVideos(CURATED_FILMS.map((film) => film.id));
 
   return CURATED_FILMS.flatMap((film) => {
     const video = videos.find((item) => item.id === film.id);
@@ -29,7 +29,7 @@ export async function getFilms(): Promise<FilmCardData[]> {
   });
 }
 
-export async function getFilm(ids: string[]): Promise<FilmDetails[]> {
+export async function getYouTubeVideos(ids: string[]): Promise<FilmDetails[]> {
   if (ids.length === 0) {
     return [];
   }
@@ -37,7 +37,8 @@ export async function getFilm(ids: string[]): Promise<FilmDetails[]> {
   const key = process.env.YOUTUBE_API_KEY;
 
   if (!key) {
-    throw new Error("YOUTUBE_API_KEY is missing from .env.local.");
+    console.error("YOUTUBE_API_KEY is not configured.");
+    throw new Error("YOUTUBE_API_KEY is not configured.");
   }
 
   const params = new URLSearchParams({
@@ -49,9 +50,21 @@ export async function getFilm(ids: string[]): Promise<FilmDetails[]> {
 
   const response = await fetch(`${FILM_API_ENDPOINT}?${params}`, {
     next: { revalidate: 3600 },
+  }).catch(() => {
+    console.error("YouTube API network request failed.");
+    throw new Error("Unable to fetch films from YouTube.");
   });
 
   if (!response.ok) {
+    const details: {
+      error?: { status?: string; errors?: { reason?: string }[] };
+    } | null = await response.json().catch(() => null);
+
+    console.error("YouTube API request failed:", {
+      status: response.status,
+      error: details?.error?.status,
+      reasons: details?.error?.errors?.map((error) => error.reason),
+    });
     throw new Error("Unable to fetch films from YouTube.");
   }
 

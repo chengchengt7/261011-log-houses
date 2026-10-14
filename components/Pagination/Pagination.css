@@ -33,10 +33,3 @@
   outline: 2px solid var(--color-gold);
   outline-offset: 3px;
 }
-
-.pagination p {
-  width: 100%;
-  text-align: center;
-  color: var(--color-muted);
-  font-size: 0.875rem;
-}

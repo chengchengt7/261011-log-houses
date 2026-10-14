@@ -8,11 +8,6 @@
   border: 0;
 }
 
-.film-filter-countries legend {
-  color: var(--color-muted);
-  font-size: 0.875rem;
-}
-
 .film-filter-countries > div {
   display: flex;
   flex-wrap: wrap;

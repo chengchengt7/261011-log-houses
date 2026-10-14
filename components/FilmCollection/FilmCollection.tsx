@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Pagination from "@/components/Pagination/Pagination";
-import { FILMS_PER_PAGE } from "@/constants/api";
+import { FILMS_PER_PAGE } from "@/constants/films";
 import SearchField from "@/components/SearchField/SearchField";
 import FilmFilters from "@/components/FilmFilters/FilmFilters";
 import FilmGrid from "@/components/FilmGrid/FilmGrid";

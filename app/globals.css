@@ -48,7 +48,9 @@ h1 {
 }
 
 h2 {
+  font-family: DM Serif Display;
   font-size: clamp(1.75rem, 1.25rem + 1.5vw, 2.5rem);
+  font-weight: 400;
   line-height: 1.2;
 }
 

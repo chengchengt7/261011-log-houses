@@ -7,7 +7,7 @@ export default function AboutPage() {
   return (
     <article className="about-page">
       <section>
-        <h2>About the collection</h2>
+        <h1>About the collection</h1>
         <p>
           Log Houses Across the World brings together {CURATED_FILMS.length} selected films from
           {" "}{countryCount} countries. Explore how people build with logs, pass on
