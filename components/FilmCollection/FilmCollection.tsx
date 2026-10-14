@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Pagination from "@/components/Pagination/Pagination";
+import { FILMS_PER_PAGE } from "@/constants/api";
 import SearchField from "@/components/SearchField/SearchField";
 import FilmFilters from "@/components/FilmFilters/FilmFilters";
 import FilmGrid from "@/components/FilmGrid/FilmGrid";
@@ -17,6 +19,7 @@ const emptyFilters: FilmFilterValues = {
 
 export default function FilmCollection({ films }: { films: FilmCardData[] }) {
   const [filters, setFilters] = useState(emptyFilters);
+  const [page, setPage] = useState(1);
   const [savedIds, setSavedIds] = useState<string[]>([]);
   const [watchlistOnly, setWatchlistOnly] = useState(false);
 
@@ -37,6 +40,7 @@ export default function FilmCollection({ films }: { films: FilmCardData[] }) {
       ? savedIds.filter((savedId) => savedId !== id)
       : [...savedIds, id];
     setSavedIds(next);
+    if (watchlistOnly) setPage(1);
     try {
       localStorage.setItem("log-houses-watchlist", JSON.stringify(next));
     } catch {
@@ -47,10 +51,15 @@ export default function FilmCollection({ films }: { films: FilmCardData[] }) {
   const visibleFilms = filterFilms(films, filters).filter(
     (film) => !watchlistOnly || savedIds.includes(film.id),
   );
+  const totalPages = Math.ceil(visibleFilms.length / FILMS_PER_PAGE);
+  const currentPage = Math.min(page, Math.max(1, totalPages));
+  const start = (currentPage - 1) * FILMS_PER_PAGE;
+  const pageFilms = visibleFilms.slice(start, start + FILMS_PER_PAGE);
   const hasFilters = watchlistOnly || Object.values(filters).some(Boolean);
 
   function updateFilter(name: keyof FilmFilterValues, value: string) {
     setFilters((current) => ({ ...current, [name]: value }));
+    setPage(1);
   }
 
   return (
@@ -61,18 +70,18 @@ export default function FilmCollection({ films }: { films: FilmCardData[] }) {
         filters={filters}
         onChange={updateFilter}
         watchlistOnly={watchlistOnly}
-        onWatchlistChange={() => setWatchlistOnly(!watchlistOnly)}
+        onWatchlistChange={() => { setWatchlistOnly(!watchlistOnly); setPage(1); }}
       />
       <div className="film-collection-results">
         <p role="status">
           {visibleFilms.length} of {films.length} films in this curated collection
         </p>
         {hasFilters && (
-          <button type="button" onClick={() => { setFilters(emptyFilters); setWatchlistOnly(false); }}>Reset filters</button>
+          <button type="button" onClick={() => { setFilters(emptyFilters); setWatchlistOnly(false); setPage(1); }}>Reset filters</button>
         )}
       </div>
       {visibleFilms.length > 0 ? (
-        <FilmGrid films={visibleFilms} savedIds={savedIds} onToggleSaved={toggleSaved} />
+        <FilmGrid films={pageFilms} savedIds={savedIds} onToggleSaved={toggleSaved} />
       ) : (
         <p className="film-collection-empty">
           {watchlistOnly && savedIds.length === 0
@@ -80,6 +89,7 @@ export default function FilmCollection({ films }: { films: FilmCardData[] }) {
             : "No films match. Try another search or reset the filters."}
         </p>
       )}
+      <Pagination page={currentPage} totalPages={totalPages} onPageChange={setPage} />
     </div>
   );
 }
